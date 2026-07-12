@@ -2,6 +2,8 @@
 
 This document is the first-stop context packet for a future agent investigating or maintaining this repository.
 
+For the agent roster and routing decision, start with [`agents/AGENT_INDEX.md`](../agents/AGENT_INDEX.md).
+
 ## Current Purpose
 
 This repo is a small macOS bridge for running two isolated Codex desktop profiles side by side.

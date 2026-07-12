@@ -240,6 +240,8 @@ The repository also includes `scripts/profile-sync.sh` with `backup`, `merge`, a
 
 For ongoing local continuity, `scripts/install-profile-sync-watch.sh` installs an optional five-minute macOS background watcher. It synchronizes safe session/history/memory artifacts bidirectionally and skips runs without recent changes; it does not copy credentials, desktop session state, or live SQLite databases.
 
+For the worker roster and routing map, see [`agents/AGENT_INDEX.md`](agents/AGENT_INDEX.md).
+
 ## Security Notes
 
 This project intentionally ignores credentials and local app state.
