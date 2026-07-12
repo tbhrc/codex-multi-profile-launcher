@@ -234,6 +234,8 @@ See [Backup, Transfer, and Merge Between Codex Profiles](docs/04_BACKUP_TRANSFER
 
 The repository also includes `scripts/profile-sync.sh` with `backup`, `merge`, and `verify` commands for repeatable local continuity migrations.
 
+For ongoing local continuity, `scripts/install-profile-sync-watch.sh` installs an optional five-minute macOS background watcher. It synchronizes safe session/history/memory artifacts bidirectionally and skips runs without recent changes; it does not copy credentials, desktop session state, or live SQLite databases.
+
 ## Security Notes
 
 This project intentionally ignores credentials and local app state.

@@ -77,6 +77,22 @@ bash scripts/profile-sync.sh verify \
 
 The utility creates a timestamped backup before merging. It excludes `auth.json`, `.env` files, and desktop browser session state. It preserves the destination profile’s `config.toml` and login identity.
 
+## Optional background continuity sync
+
+For users actively working in both profiles, the repository also includes a macOS `launchd` watcher. It checks every five minutes, skips itself when there have been no recent continuity changes, and synchronizes safe session/history/memory artifacts in both directions:
+
+```bash
+bash scripts/install-profile-sync-watch.sh
+```
+
+The watcher deliberately does not copy `auth.json`, browser session state, desktop app data, or live SQLite databases. SQLite files must not be copied while Codex is running because that can corrupt locks or lose concurrent updates. The watcher preserves local continuity files, but it cannot make a live chat or named desktop project appear simultaneously in both account UIs.
+
+To stop it:
+
+```bash
+launchctl bootout "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.codex.multi-profile.sync.plist"
+```
+
 ## Expected result
 
 After a successful migration, the destination profile can continue from the transferred local session history, memories, skills, prompts, and project folders. The visible desktop project list may still differ because named project containers are not reliably transferable.
