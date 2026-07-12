@@ -21,6 +21,51 @@ It is useful if you want:
 - separate Codex Business and personal profiles
 - parallel Codex desktop sessions
 
+## Start Here: Agent Install Prompt
+
+If you want a coding agent to install this for you, copy this prompt into Claude Code, Codex, Cursor, Windsurf, or your preferred local coding agent:
+
+```text
+You are helping me install the Codex Multi-Profile Launcher for macOS.
+
+Goal:
+Create two isolated Codex desktop launchers so I can run separate Codex/ChatGPT desktop profiles at the same time without logging in and out.
+
+Repository:
+https://github.com/tbhrc/codex-multi-profile-launcher
+
+Please do the following:
+1. Verify I am on macOS.
+2. Verify the ChatGPT/Codex desktop app exists, usually at /Applications/ChatGPT.app.
+3. Verify the Codex CLI is available by running codex --version.
+4. Clone the repository if it is not already present.
+5. Run bash scripts/bootstrap.sh from the repository root.
+6. Run bash scripts/install-macos-launchers.sh from the repository root.
+7. Confirm that these apps were created:
+   - ~/Applications/Codex C1 Business.app
+   - ~/Applications/Codex C2 David.app
+8. Open C1 with:
+   open -n "$HOME/Applications/Codex C1 Business.app"
+9. Verify the C1 process uses:
+   --user-data-dir=$HOME/Library/Application Support/Codex-C1-Business
+10. Tell me to sign into the account I want for C1, then repeat the same test for C2 if I ask.
+
+Important safety rules:
+- Do not read, print, copy, or move any auth.json file.
+- Do not copy credentials between profiles.
+- Do not modify my default ~/.codex profile unless I explicitly ask.
+- Do not delete existing app data.
+- If /Applications/ChatGPT.app is missing, stop and tell me exactly what path you checked.
+
+Expected result:
+I should have three usable desktop profiles:
+- the normal ChatGPT/Codex app
+- C1, using ~/.codex-business and ~/Library/Application Support/Codex-C1-Business
+- C2, using ~/.codex-david and ~/Library/Application Support/Codex-C2-David
+```
+
+After the agent finishes, drag `Codex C1 Business.app` and `Codex C2 David.app` from `~/Applications` to your Dock.
+
 ## What Problem This Solves
 
 The normal ChatGPT/Codex desktop app uses one default desktop profile. If you switch accounts inside that app, you interrupt the current login and workspace.
