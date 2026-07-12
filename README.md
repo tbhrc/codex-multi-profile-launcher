@@ -232,6 +232,8 @@ If both profiles are used for active work, local Codex session history, memories
 
 See [Backup, Transfer, and Merge Between Codex Profiles](docs/04_BACKUP_TRANSFER_MERGE.md) for the data boundaries and safe migration rules.
 
+The repository also includes `scripts/profile-sync.sh` with `backup`, `merge`, and `verify` commands for repeatable local continuity migrations.
+
 ## Security Notes
 
 This project intentionally ignores credentials and local app state.

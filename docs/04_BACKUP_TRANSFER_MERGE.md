@@ -56,6 +56,27 @@ C1 desktop data:      ~/Library/Application Support/Codex-C1-Business
 
 The desktop data directories must remain separate because they contain account and application session state. Do not replace the C1 desktop directory with the original directory.
 
+## Use the migration utility
+
+The repository includes `scripts/profile-sync.sh` for repeatable local migrations:
+
+```bash
+# Back up a destination profile
+bash scripts/profile-sync.sh backup \
+  --to "$HOME/.codex-business"
+
+# Merge local continuity data into a destination profile
+bash scripts/profile-sync.sh merge \
+  --from "$HOME/.codex" \
+  --to "$HOME/.codex-business"
+
+# Verify the destination profile
+bash scripts/profile-sync.sh verify \
+  --profile "$HOME/.codex-business"
+```
+
+The utility creates a timestamped backup before merging. It excludes `auth.json`, `.env` files, and desktop browser session state. It preserves the destination profile’s `config.toml` and login identity.
+
 ## Expected result
 
 After a successful migration, the destination profile can continue from the transferred local session history, memories, skills, prompts, and project folders. The visible desktop project list may still differ because named project containers are not reliably transferable.
