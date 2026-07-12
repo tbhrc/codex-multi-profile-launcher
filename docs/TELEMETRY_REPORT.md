@@ -8,7 +8,6 @@ The numbers below are taken from Codex session metadata, not estimated from the 
 
 | Field | Value |
 |---|---:|
-| Session ID | `019f51c9-f039-7242-8add-61dbc5ff7821` |
 | Captured through | 2026-07-12 21:43:11 UTC |
 | Captured through, Dubai time | 2026-07-13 01:43:11 GST |
 | Model recorded | `gpt-5.5` |
