@@ -10,6 +10,18 @@ This project creates Dock-friendly launchers for separate ChatGPT/Codex desktop 
 - Dock icon
 - profile label, such as `C1` and `C2`
 
+## Disclaimer: Unofficial Community Project
+
+This is an independent, unofficial community project. It is not created, maintained, endorsed, sponsored, approved, or supported by OpenAI. It is not affiliated with OpenAI, ChatGPT, Codex, or the ChatGPT desktop app team in any way.
+
+All product names, trademarks, service marks, logos, and brand references, including OpenAI, ChatGPT, Codex, and macOS, belong to their respective owners. They are mentioned only to describe compatibility and the user problem this project attempts to solve.
+
+This repository does not provide, modify, bypass, or redistribute OpenAI accounts, subscriptions, credentials, authentication files, application binaries, or proprietary OpenAI software. It only creates local macOS launcher wrappers around an app that you must already have installed and be authorized to use.
+
+You are responsible for using this project in compliance with OpenAI's terms, your workspace policies, your employer's rules, and any applicable laws. Do not use this project for account sharing, quota evasion, credential movement, policy bypassing, or any other use that violates the rules of the services you access.
+
+If OpenAI, ChatGPT, Codex, or an authorized representative of OpenAI requests that this project be changed, renamed, restricted, unpublished, or removed, the maintainer may do so at any time, without prior notice. This repository may therefore be modified or taken down at the request of OpenAI.
+
 It is useful if you want:
 
 - Codex multiple profiles
