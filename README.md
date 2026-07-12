@@ -99,6 +99,10 @@ This is what the two isolated launcher profiles look like running side by side. 
 
 This repository was created through a real Codex-assisted implementation session. The captured usage report is available in [docs/TELEMETRY_REPORT.md](docs/TELEMETRY_REPORT.md).
 
+## Maintainer Handoff
+
+Future maintainers and coding agents should read [docs/05_FRESH_SESSION_HANDOFF.md](docs/05_FRESH_SESSION_HANDOFF.md) and [docs/06_MAINTENANCE_SOP.md](docs/06_MAINTENANCE_SOP.md) before investigating or changing this repo. These documents capture the implementation decisions, lessons learned, validation commands, runtime caveats, and repeatable maintenance workflow.
+
 ## Requirements
 
 - macOS
