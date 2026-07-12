@@ -2,6 +2,8 @@
 
 Run multiple isolated Codex desktop profiles on the same Mac without logging in and out.
 
+Unofficial community project: it may be changed or taken down at OpenAI's request, so feel free to fork it now if it is useful to you.
+
 This project creates Dock-friendly launchers for separate ChatGPT/Codex desktop app profiles. Each launcher gets its own:
 
 - `CODEX_HOME`
@@ -9,18 +11,6 @@ This project creates Dock-friendly launchers for separate ChatGPT/Codex desktop 
 - login session
 - Dock icon
 - profile label, such as `C1` and `C2`
-
-## Disclaimer: Unofficial Community Project
-
-This is an independent, unofficial community project. It is not created, maintained, endorsed, sponsored, approved, or supported by OpenAI. It is not affiliated with OpenAI, ChatGPT, Codex, or the ChatGPT desktop app team in any way.
-
-All product names, trademarks, service marks, logos, and brand references, including OpenAI, ChatGPT, Codex, and macOS, belong to their respective owners. They are mentioned only to describe compatibility and the user problem this project attempts to solve.
-
-This repository does not provide, modify, bypass, or redistribute OpenAI accounts, subscriptions, credentials, authentication files, application binaries, or proprietary OpenAI software. It only creates local macOS launcher wrappers around an app that you must already have installed and be authorized to use.
-
-You are responsible for using this project in compliance with OpenAI's terms, your workspace policies, your employer's rules, and any applicable laws. Do not use this project for account sharing, quota evasion, credential movement, policy bypassing, or any other use that violates the rules of the services you access.
-
-If OpenAI, ChatGPT, Codex, or an authorized representative of OpenAI requests that this project be changed, renamed, restricted, unpublished, or removed, the maintainer may do so at any time, without prior notice. This repository may therefore be modified or taken down at the request of OpenAI.
 
 It is useful if you want:
 
@@ -104,6 +94,10 @@ The result is three distinct profiles: the original app plus C1 and C2.
 This is what the two isolated launcher profiles look like running side by side. The Dock remains visible so you can see C1 as its own launcher app. Account handles are masked in the screenshot.
 
 ![C1 and C2 Codex desktop profiles running side by side](docs/assets/codex-c1-c2-side-by-side.png)
+
+## Build Telemetry
+
+This repository was created through a real Codex-assisted implementation session. The captured usage report is available in [docs/TELEMETRY_REPORT.md](docs/TELEMETRY_REPORT.md).
 
 ## Requirements
 
@@ -251,6 +245,18 @@ The repository includes `.gitignore` rules for common credential files, but you 
 This is a macOS-first launcher pattern. It was tested with the ChatGPT/Codex desktop app on macOS.
 
 If the app changes how it handles login or `--user-data-dir`, the launch scripts may need adjustment.
+
+## Disclaimer: Unofficial Community Project
+
+This is an independent, unofficial community project. It is not created, maintained, endorsed, sponsored, approved, or supported by OpenAI. It is not affiliated with OpenAI, ChatGPT, Codex, or the ChatGPT desktop app team in any way.
+
+All product names, trademarks, service marks, logos, and brand references, including OpenAI, ChatGPT, Codex, and macOS, belong to their respective owners. They are mentioned only to describe compatibility and the user problem this project attempts to solve.
+
+This repository does not provide, modify, bypass, or redistribute OpenAI accounts, subscriptions, credentials, authentication files, application binaries, or proprietary OpenAI software. It only creates local macOS launcher wrappers around an app that you must already have installed and be authorized to use.
+
+You are responsible for using this project in compliance with OpenAI's terms, your workspace policies, your employer's rules, and any applicable laws. Do not use this project for account sharing, quota evasion, credential movement, policy bypassing, or any other use that violates the rules of the services you access.
+
+If OpenAI, ChatGPT, Codex, or an authorized representative of OpenAI requests that this project be changed, renamed, restricted, unpublished, or removed, the maintainer may do so at any time, without prior notice. This repository may therefore be modified or taken down at the request of OpenAI.
 
 ## License
 
