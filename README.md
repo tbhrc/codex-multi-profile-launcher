@@ -99,6 +99,12 @@ Each launcher starts the installed ChatGPT/Codex desktop app with a different ru
 
 The result is three distinct profiles: the original app plus C1 and C2.
 
+## Example: Side-by-Side Profiles
+
+This is what the two isolated launcher profiles look like running side by side. The Dock remains visible so you can see C1 as its own launcher app. Account handles are masked in the screenshot.
+
+![C1 and C2 Codex desktop profiles running side by side](docs/assets/codex-c1-c2-side-by-side.png)
+
 ## Requirements
 
 - macOS
