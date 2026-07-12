@@ -10,6 +10,32 @@ Your task workspace remains the orchestration home:
 
 Your orchestrator owns task intake, routing, tracker updates, review, and synthesis. This folder only provides the Codex runtime boundary.
 
+## Repository Structure
+
+Use this map before searching broadly:
+
+```text
+AGENTS.md                         # root operating rules and stop conditions
+README.md                         # public setup, security, and user-facing overview
+agents/                           # worker instructions and canonical agent index
+  AGENT_INDEX.md                  # roster, roles, routing, and profile paths
+  claude-orchestrator/AGENT.md    # Larry/task-orchestrator boundary
+  codex-business/AGENT.md         # C1 production worker
+  codex-david/AGENT.md            # C2 prototype/review worker
+config/                           # worker registry, routing, and safe baseline config
+docs/                             # architecture, guide, roadmap, handoff, and SOPs
+prompts/                          # reusable worker and review prompts
+scripts/                          # bootstrap, launchers, and profile sync
+wrappers/                         # controlled task delegation entrypoint
+tools/                            # validation and repository tooling
+tests/                            # automated tests
+runtime/                          # local evidence and runtime state; not source of truth
+schemas/                          # output contracts
+references/                       # source notes and boundary references
+```
+
+For worker identity or routing, read `agents/AGENT_INDEX.md` and the relevant worker file. For setup or continuity, read `docs/01_USER_GUIDE.md`, `docs/04_BACKUP_TRANSFER_MERGE.md`, and `docs/06_MAINTENANCE_SOP.md`. For architecture or ownership, read `docs/00_MASTER_ARCHITECTURE.md`.
+
 ## Worker Codes
 
 | Code | Name | Role | Codex home |
