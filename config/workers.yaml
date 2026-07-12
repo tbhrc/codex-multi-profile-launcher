@@ -8,7 +8,7 @@ manager:
 
 workers:
   - id: C1
-    name: Codex Business
+    name: tbhrc Login
     runtime: codex
     codex_home: ~/.codex-business
     primary_roles:
@@ -18,11 +18,12 @@ workers:
     max_concurrent_tasks: 1
 
   - id: C2
-    name: Codex David
+    name: David Login
     runtime: codex
-    codex_home: ~/.codex-david
+    codex_home: ~/.codex
     primary_roles:
-      - prototype_builder
-      - bootstrap_worker
+      - original_profile_worker
+      - continuity_worker
+      - reviewer
       - reviewer
     max_concurrent_tasks: 1

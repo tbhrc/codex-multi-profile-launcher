@@ -12,13 +12,13 @@ The external task workspace or orchestrator owns task intake, routing, tracker u
 |---|---|---|---|---|---|
 | Larry | [`agents/claude-orchestrator/AGENT.md`](claude-orchestrator/AGENT.md) | Task orchestrator | External task workspace | External task workspace | Intake, routing, review, synthesis |
 | C1 | [`agents/codex-business/AGENT.md`](codex-business/AGENT.md) | Production worker | `~/.codex-business` | `~/Library/Application Support/Codex-C1-Business` | Implementation, integration, hardening, tests |
-| C2 | [`agents/codex-david/AGENT.md`](codex-david/AGENT.md) | Prototype/review worker | `~/.codex-david` | `~/Library/Application Support/Codex-C2-David` | Prototypes, bootstrap, independent review, critique |
+| C2 | [`agents/codex-david/AGENT.md`](codex-david/AGENT.md) | David original-profile worker | `~/.codex` | `~/Library/Application Support/Codex` | Existing projects, chats, tasks, general work, review |
 
 ## Routing map
 
 Use C1 when the task has a clear production objective and needs implementation, integration, hardening, cleanup, or test fixes.
 
-Use C2 when the task is exploratory, prototype-oriented, a bootstrap experiment, or an independent review of C1 work.
+Use C2 when the task must continue in the original David profile and preserve its existing projects, chats, and task context. Use it for general work, investigation, and review in that profile.
 
 Keep the work inline when it is tiny, highly conversational, or depends on rapidly changing context. Dispatch only when a separate Codex context provides enough value to justify the startup cost.
 

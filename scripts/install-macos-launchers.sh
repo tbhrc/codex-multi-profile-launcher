@@ -8,7 +8,7 @@ APP_BIN="$CHATGPT_APP/Contents/MacOS/ChatGPT"
 APPS_DIR="${APPS_DIR:-$HOME/Applications}"
 
 C1_APP_NAME="${C1_APP_NAME:-Codex C1 Business}"
-C2_APP_NAME="${C2_APP_NAME:-Codex C2 David}"
+C2_APP_NAME="${C2_APP_NAME:-Codex David Login}"
 C1_BUNDLE_ID="${C1_BUNDLE_ID:-com.codex-multi-profile-launcher.c1-business}"
 C2_BUNDLE_ID="${C2_BUNDLE_ID:-com.codex-multi-profile-launcher.c2-david}"
 

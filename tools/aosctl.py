@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / "runtime"
 ACTIVE_WORKER = RUNTIME / "active_worker.json"
 VALID_WORKERS = {
-    "C1": "Codex Business",
-    "C2": "Codex David",
+    "C1": "tbhrc Login",
+    "C2": "David Login",
 }
 
 

@@ -22,7 +22,7 @@ fi
 
 export CODEX_HOME="$CODEX_HOME_DIR"
 export CODEX_BRIDGE_WORKER_ID="C1"
-export CODEX_BRIDGE_WORKER_NAME="Codex Business"
+export CODEX_BRIDGE_WORKER_NAME="tbhrc Login"
 
 python3 "$ROOT/tools/aosctl.py" activate-worker C1 --codex-home "$CODEX_HOME_DIR" >/dev/null
 

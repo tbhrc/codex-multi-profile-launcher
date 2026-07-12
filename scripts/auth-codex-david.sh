@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-export CODEX_HOME="$HOME/.codex-david"
+export CODEX_HOME="$HOME/.codex"
 mkdir -p "$CODEX_HOME"
 chmod 700 "$CODEX_HOME"
 if [ ! -f "$CODEX_HOME/config.toml" ]; then

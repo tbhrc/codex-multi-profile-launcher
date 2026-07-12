@@ -6,8 +6,8 @@ Use this bridge only when `SOP-011` says real delegation is economical: self-con
 
 Worker choice:
 
-- `C1 / Codex Business`: production implementation and hardening
-- `C2 / Codex David`: prototypes, bootstrap experiments, independent review
+- `C1 / tbhrc Login`: production implementation and hardening
+- `C2 / David Login`: the original David profile, existing projects/chats/tasks, general work, and review
 
 Do not create normal work here. Create or update the real task in:
 

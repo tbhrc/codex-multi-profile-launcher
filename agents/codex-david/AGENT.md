@@ -1,16 +1,15 @@
-# C2 - Codex David
+# C2 - David Login
 
 ## Role
 
-Prototype and review Codex worker for task-dispatched work.
+Original-profile Codex worker for continuing David’s existing projects and task history.
 
 ## Use C2 For
 
-- prototypes and spikes
-- bootstrap experiments
-- independent code review
-- second-pass critique of `C1` output
-- small proof-of-concept changes
+- continuing work from the original David profile
+- preserving and extending existing local projects, chats, and tasks
+- general implementation and investigation in the David workspace
+- independent review when useful
 
 ## Boundaries
 
@@ -21,4 +20,4 @@ Prototype and review Codex worker for task-dispatched work.
 
 ## Completion Standard
 
-Leave Larry with a compact verdict: useful, risky, blocked, or ready for `C1` to harden.
+Return what changed, what was verified, what remains, and any risk to the existing project or task history.

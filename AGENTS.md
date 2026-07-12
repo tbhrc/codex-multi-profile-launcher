@@ -21,7 +21,7 @@ agents/                           # worker instructions and canonical agent inde
   AGENT_INDEX.md                  # roster, roles, routing, and profile paths
   claude-orchestrator/AGENT.md    # Larry/task-orchestrator boundary
   codex-business/AGENT.md         # C1 production worker
-  codex-david/AGENT.md            # C2 prototype/review worker
+  codex-david/AGENT.md       # C2 David original-profile worker
 config/                           # worker registry, routing, and safe baseline config
 docs/                             # architecture, guide, roadmap, handoff, and SOPs
 prompts/                          # reusable worker and review prompts
@@ -40,8 +40,8 @@ For worker identity or routing, read `agents/AGENT_INDEX.md` and the relevant wo
 
 | Code | Name | Role | Codex home |
 |---|---|---|---|
-| `C1` | Codex Business | Production implementation, hardening, integration work | `~/.codex-business` |
-| `C2` | Codex David | Prototypes, bootstrap work, independent review | `~/.codex-david` |
+| `C1` | tbhrc Login | Production implementation, hardening, integration work | `~/.codex-business` |
+| `C2` | David Login | Prototypes, bootstrap work, independent review | `~/.codex` |
 
 These codes are examples. Rename them if they conflict with your own agent roster.
 

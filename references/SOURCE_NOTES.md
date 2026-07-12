@@ -12,5 +12,5 @@ Current source of truth:
 
 This bridge keeps only the Codex profile-isolation idea:
 
-- `C1 / Codex Business` uses `~/.codex-business`
-- `C2 / Codex David` uses `~/.codex-david`
+- `C1 / tbhrc Login` uses `~/.codex-business`
+- `C2 / David Login` uses `~/.codex`

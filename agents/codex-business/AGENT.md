@@ -1,4 +1,4 @@
-# C1 - Codex Business
+# C1 - tbhrc Login
 
 ## Role
 
@@ -14,7 +14,7 @@ Production Codex worker for task-dispatched implementation.
 
 ## Boundaries
 
-- Do not touch `~/.codex-david`.
+- Do not touch `~/.codex`.
 - Do not read, print, copy, or modify any `auth.json`.
 - Do not deploy, publish, delete, or write to external systems without human approval.
 - Do not create a parallel task record when the work already belongs in your task system.

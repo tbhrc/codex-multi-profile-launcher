@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DAVID_HOME="$HOME/.codex-david"
+DAVID_HOME="$HOME/.codex"
 BUSINESS_HOME="$HOME/.codex-business"
 
 mkdir -p "$DAVID_HOME" "$BUSINESS_HOME"
@@ -29,6 +29,6 @@ python3 "$ROOT/tools/aosctl.py" validate --verbose
 echo
 echo "Bootstrap complete."
 echo "Project root: $ROOT"
-echo "Codex David home: $DAVID_HOME"
-echo "Codex Business home: $BUSINESS_HOME"
-echo "Next: bash $ROOT/scripts/auth-codex-david.sh"
+echo "David Login home: $DAVID_HOME"
+echo "tbhrc Login home: $BUSINESS_HOME"
+echo "Next: bash $ROOT/scripts/auth-.codex.sh"

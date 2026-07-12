@@ -4,19 +4,19 @@ principle: your task system routes work; this bridge only selects a Codex profil
 
 workers:
   C1:
-    name: Codex Business
+    name: tbhrc Login
     use_for:
       - production implementation
       - hardening
       - integrations
       - test fixes
   C2:
-    name: Codex David
+    name: David Login
     use_for:
-      - prototypes
-      - bootstrap experiments
+      - continuing original-profile work
+      - preserving existing projects and task history
+      - general investigation and implementation
       - independent review
-      - second-pass critique
 
 constraints:
   task_workspace_is_source_of_truth: true

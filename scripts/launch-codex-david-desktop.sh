@@ -4,11 +4,11 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP="/Applications/ChatGPT.app"
 BIN="$APP/Contents/MacOS/ChatGPT"
-CODEX_HOME_DIR="$HOME/.codex-david"
-USER_DATA_DIR="$HOME/Library/Application Support/Codex-C2-David"
+CODEX_HOME_DIR="$HOME/.codex"
+USER_DATA_DIR="$HOME/Library/Application Support/Codex"
 
 if [ ! -x "$BIN" ]; then
-  osascript -e 'display alert "Codex C2 David" message "Could not find /Applications/ChatGPT.app. Install or move ChatGPT.app there, then try again."'
+  osascript -e 'display alert "David Login" message "Could not find /Applications/ChatGPT.app. Install or move ChatGPT.app there, then try again."'
   exit 1
 fi
 
@@ -22,7 +22,7 @@ fi
 
 export CODEX_HOME="$CODEX_HOME_DIR"
 export CODEX_BRIDGE_WORKER_ID="C2"
-export CODEX_BRIDGE_WORKER_NAME="Codex David"
+export CODEX_BRIDGE_WORKER_NAME="David Login"
 
 python3 "$ROOT/tools/aosctl.py" activate-worker C2 --codex-home "$CODEX_HOME_DIR" >/dev/null
 

@@ -22,14 +22,14 @@ fi
 
 case "$WORKER" in
   C2)
-    export CODEX_HOME="$HOME/.codex-david"
+    export CODEX_HOME="$HOME/.codex"
     export CODEX_BRIDGE_WORKER_ID="C2"
-    export CODEX_BRIDGE_WORKER_NAME="Codex David"
+    export CODEX_BRIDGE_WORKER_NAME="David Login"
     ;;
   C1)
     export CODEX_HOME="$HOME/.codex-business"
     export CODEX_BRIDGE_WORKER_ID="C1"
-    export CODEX_BRIDGE_WORKER_NAME="Codex Business"
+    export CODEX_BRIDGE_WORKER_NAME="tbhrc Login"
     ;;
   *)
     echo "Forbidden worker ID: $WORKER" >&2
