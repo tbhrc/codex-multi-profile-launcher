@@ -226,6 +226,12 @@ You should see the app running with:
 --user-data-dir=/Users/<you>/Library/Application Support/Codex-C1-Business
 ```
 
+## Backup and transfer between profiles
+
+If both profiles are used for active work, local Codex session history, memories, skills, prompts, MCP templates, and project trust settings can be backed up and merged into the other profile. The desktop app’s named project containers and sidebar project index are not reliably portable, so the destination profile may need its local project re-added in the UI even though the project folder and chat history are preserved.
+
+See [Backup, Transfer, and Merge Between Codex Profiles](docs/04_BACKUP_TRANSFER_MERGE.md) for the data boundaries and safe migration rules.
+
 ## Security Notes
 
 This project intentionally ignores credentials and local app state.
