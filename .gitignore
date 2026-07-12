@@ -1,0 +1,31 @@
+# Secrets and credentials
+**/auth.json
+**/*token*
+**/*.pem
+**/*.key
+.env
+.env.*
+
+# Local Codex state
+.codex/
+.codex-home/
+.codex-homes/
+
+# Runtime noise
+runtime/logs/*
+runtime/tmp/*
+runtime/worktrees/*
+!runtime/logs/.gitkeep
+!runtime/tmp/.gitkeep
+!runtime/worktrees/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

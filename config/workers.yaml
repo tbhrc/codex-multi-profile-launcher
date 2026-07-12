@@ -1,0 +1,28 @@
+version: 1
+
+manager:
+  id: Larry
+  name: Larry
+  runtime: Claude Code
+  source_of_truth: /path/to/your/task-workspace
+
+workers:
+  - id: C1
+    name: Codex Business
+    runtime: codex
+    codex_home: ~/.codex-business
+    primary_roles:
+      - production_builder
+      - hardening_worker
+      - integration_worker
+    max_concurrent_tasks: 1
+
+  - id: C2
+    name: Codex David
+    runtime: codex
+    codex_home: ~/.codex-david
+    primary_roles:
+      - prototype_builder
+      - bootstrap_worker
+      - reviewer
+    max_concurrent_tasks: 1

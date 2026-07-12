@@ -1,0 +1,12 @@
+# Authentication is stored as auth.json inside this worker-specific CODEX_HOME.
+cli_auth_credentials_store = "file"
+forced_login_method = "chatgpt"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+check_for_update_on_startup = true
+
+[history]
+persistence = "save-all"
+
+[sandbox_workspace_write]
+network_access = false

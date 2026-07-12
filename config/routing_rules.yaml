@@ -1,0 +1,25 @@
+version: 1
+
+principle: your task system routes work; this bridge only selects a Codex profile.
+
+workers:
+  C1:
+    name: Codex Business
+    use_for:
+      - production implementation
+      - hardening
+      - integrations
+      - test fixes
+  C2:
+    name: Codex David
+    use_for:
+      - prototypes
+      - bootstrap experiments
+      - independent review
+      - second-pass critique
+
+constraints:
+  task_workspace_is_source_of_truth: true
+  automatic_account_rotation: false
+  external_write_requires_human_approval: true
+  auth_json_never_enters_repo: true

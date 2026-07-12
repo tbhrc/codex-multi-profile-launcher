@@ -1,0 +1,18 @@
+project_id = "CODEX-MULTI-PROFILE-LAUNCHER"
+project_name = "Codex Multi-Profile Launcher"
+project_root = "."
+task_workspace_root = "/path/to/your/task-workspace"
+default_manager = "Larry"
+default_production_worker = "C1"
+default_review_worker = "C2"
+
+[execution]
+max_active_tasks_per_worker = 1
+require_output_contract = true
+allow_automatic_account_rotation = false
+
+[approval]
+external_writes = "human"
+deployments = "human"
+destructive_actions = "human"
+credential_changes = "human"

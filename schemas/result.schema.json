@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Multi-Profile Worker Result",
+  "type": "object",
+  "required": [
+    "task_id",
+    "worker_id",
+    "status",
+    "started_at",
+    "finished_at",
+    "artifacts",
+    "errors",
+    "review_recommended"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^(TASK-[0-9]+|FD-[0-9]{3}|[A-Za-z0-9][A-Za-z0-9-]{0,79})$"
+    },
+    "worker_id": {
+      "enum": [
+        "C2",
+        "C1"
+      ]
+    },
+    "worker_name": {
+      "enum": [
+        "Codex David",
+        "Codex Business"
+      ]
+    },
+    "status": {
+      "enum": [
+        "success",
+        "failed",
+        "blocked",
+        "partial"
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "exit_code": {
+      "type": "integer"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "review_recommended": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}
