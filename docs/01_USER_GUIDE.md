@@ -11,7 +11,7 @@ This creates the two Codex homes if missing:
 
 ```text
 ~/.codex-business
-~/.codex-david
+~/.codex
 ```
 
 It copies safe config files only. It does not create or copy credentials.
@@ -46,7 +46,7 @@ Use `C1` for production implementation:
 bash scripts/start-codex-business.sh
 ```
 
-Use `C2` for prototypes or review:
+Use `C2` when the task needs David's original Codex profile, existing project/chat context, general investigation, or independent review:
 
 ```bash
 bash scripts/start-codex-david.sh
@@ -103,7 +103,7 @@ If both workers appear to use the same account, check:
 
 ```bash
 CODEX_HOME="$HOME/.codex-business" codex login status
-CODEX_HOME="$HOME/.codex-david" codex login status
+CODEX_HOME="$HOME/.codex" codex login status
 ```
 
 If validation fails:
