@@ -1,4 +1,4 @@
-version: 1
+version: 2
 
 manager:
   id: Larry
@@ -27,3 +27,14 @@ workers:
       - reviewer
       - reviewer
     max_concurrent_tasks: 1
+
+dispatch:
+  default_profile: C2
+  default_provider: antigravity
+  providers:
+    - id: antigravity
+      command: agy
+      default_model: gemini-3.1-pro-high
+    - id: claude
+      command: claude
+      default_model: claude-sonnet-4-6

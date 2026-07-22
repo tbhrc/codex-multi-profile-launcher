@@ -1,6 +1,20 @@
-version: 1
+version: 2
 
 principle: your task system routes work; this bridge only selects a Codex profile.
+
+dispatch_default:
+  profile: C2
+  provider: antigravity
+  model: gemini-3.1-pro-high
+  fallback: forbidden
+
+dispatch_providers:
+  antigravity:
+    command: agy
+    supported: true
+  claude:
+    command: claude
+    supported: true
 
 workers:
   C1:
@@ -17,6 +31,7 @@ workers:
       - preserving existing projects and task history
       - general investigation and implementation
       - independent review
+      - default dispatch profile
 
 constraints:
   task_workspace_is_source_of_truth: true
