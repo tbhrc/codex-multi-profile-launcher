@@ -61,6 +61,8 @@ These are facts verified during the original build and later maintenance passes.
 
 ## Key Decisions
 
+- Global delegated-work default: C2 + Anti-Gravity with an explicit model. Claude Code is explicit opt-in; C1 is never an implicit fallback.
+
 1. Keep the system boring.
    The repo is intentionally a bridge, not a full orchestration layer.
 

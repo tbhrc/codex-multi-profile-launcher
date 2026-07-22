@@ -104,7 +104,19 @@ Expected process argument:
 
 Use narrow process checks that search only for the profile-specific user-data directory. Do not dump broad process lists because unrelated tools may include secrets in arguments.
 
-## 7. Profile Backup and Merge
+## 7. Verify Global Dispatch
+
+The default route must remain C2 + Anti-Gravity, with Claude Code as an explicit
+alternate and no implicit C1 fallback:
+
+```bash
+bash wrappers/delegate_to_local_cli.sh --task-file /absolute/path/to/task.md --dry-run
+bash wrappers/delegate_to_local_cli.sh --provider claude --task-file /absolute/path/to/task.md --dry-run
+```
+
+Run `python3 tools/aosctl.py validate` after any registry or wrapper change.
+
+## 8. Profile Backup and Merge
 
 Use `scripts/profile-sync.sh` for repeatable backup and merge work:
 

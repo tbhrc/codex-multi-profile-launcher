@@ -43,6 +43,12 @@ For worker identity or routing, read `agents/AGENT_INDEX.md` and the relevant wo
 | `C1` | tbhrc Login | Production implementation, hardening, integration work | `~/.codex-business` |
 | `C2` | David Login | Prototypes, bootstrap work, independent review | `~/.codex` |
 
+## Global Dispatch Default
+
+For a delegated task, use C2 with Anti-Gravity by default and name an explicit model.
+Claude Code is an explicit alternate provider. Do not silently choose C1 or another
+provider when C2 or the selected provider is unavailable; record the blocker instead.
+
 These codes are examples. Rename them if they conflict with your own agent roster.
 
 ## Startup Check

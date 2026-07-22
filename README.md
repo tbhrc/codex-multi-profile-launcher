@@ -119,6 +119,21 @@ ls -ld /Applications/ChatGPT.app
 
 ## Quick Start
 
+## Global Dispatch Default
+
+For an approved delegated task, the bridge defaults to David's **C2** profile and
+**Anti-Gravity** (`agy`) with an explicit model. Claude Code is an explicit alternate
+provider. The dispatcher fails closed if the selected provider is unavailable; it never
+silently falls back to C1.
+
+```bash
+bash wrappers/delegate_to_local_cli.sh \
+  --task-file "/absolute/path/to/task.md" \
+  --workdir "/absolute/path/to/project"
+```
+
+Select Claude deliberately with `--provider claude`.
+
 Clone the repo:
 
 ```bash

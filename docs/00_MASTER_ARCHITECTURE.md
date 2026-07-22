@@ -84,6 +84,12 @@ The normal ChatGPT/Codex app continues to use `~/Library/Application Support/Cod
 5. The wrapper writes execution evidence under `runtime/outputs/`.
 6. Read the result and update the task record.
 
+## Global Dispatch Default
+
+Use C2 / David profile with Anti-Gravity (`agy`) and an explicit model for approved
+delegated work. Claude Code is an explicit alternate provider. If the selected route is
+unavailable, fail closed and return that blocker; do not silently use C1.
+
 ## Design Principle
 
 The bridge should stay boring. If a feature duplicates your task system, remove it from this package or leave it in your task system only.

@@ -22,13 +22,13 @@ bash scripts/auth-codex-david.sh      # C2
 /path/to/your/task-workspace/Team Inbox/
 ```
 
-4. Dispatch a task to Codex only when Larry decides it is economical:
+4. Dispatch a task only when Larry decides it is economical. The default is C2 through Anti-Gravity:
 
 ```bash
-bash wrappers/delegate_to_codex.sh \
-  --worker C1 \
+bash wrappers/delegate_to_local_cli.sh \
   --task-file "/path/to/your/task-workspace/Team Inbox/2_ready/example.md" \
   --workdir "/path/to/your/project"
 ```
 
-Use `C1` for production implementation. Use `C2` for prototypes and review.
+Use `--provider claude` only for an explicit Claude Code dispatch. Do not silently fall
+back to C1 when C2 or the selected provider is unavailable.

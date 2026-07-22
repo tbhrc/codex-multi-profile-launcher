@@ -71,16 +71,33 @@ The task should usually live in your task system, for example:
 /path/to/your/task-workspace/Team Inbox/2_ready/NNN-some-task-YYYY-MM-DD.md
 ```
 
-Run it through Codex:
+The global default is C2 through Anti-Gravity:
 
 ```bash
-bash wrappers/delegate_to_codex.sh \
-  --worker C1 \
+bash wrappers/delegate_to_local_cli.sh \
   --task-file "/path/to/your/task-workspace/Team Inbox/2_ready/NNN-some-task-YYYY-MM-DD.md" \
   --workdir "/path/to/your/project"
 ```
 
-Use `--worker C2` when the assignment is prototype or review oriented.
+Use Claude Code only when explicitly selected:
+
+```bash
+bash wrappers/delegate_to_local_cli.sh \
+  --provider claude \
+  --task-file "/path/to/your/task-workspace/Team Inbox/2_ready/NNN-some-task-YYYY-MM-DD.md" \
+  --workdir "/path/to/your/project"
+```
+
+The existing Codex-only wrapper remains available when specifically needed:
+
+```bash
+bash wrappers/delegate_to_codex.sh \
+  --worker C2 \
+  --task-file "/path/to/your/task-workspace/Team Inbox/2_ready/NNN-some-task-YYYY-MM-DD.md" \
+  --workdir "/path/to/your/project"
+```
+
+Do not silently fall back to C1 when C2 or the selected provider is unavailable.
 
 ## 6. Read Results
 

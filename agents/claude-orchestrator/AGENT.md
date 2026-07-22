@@ -7,7 +7,7 @@ This file exists only to clarify how Claude Code should think about the Codex br
 - Larry owns the user conversation.
 - Larry owns task creation and tracker updates.
 - Larry decides whether a Codex dispatch is worth the cold-start cost.
-- Larry invokes `C1` or `C2` only through the wrapper scripts.
+- Larry defaults delegated work to C2 through Anti-Gravity with an explicit model; Claude Code is an explicit alternate provider. C1 is never an implicit fallback.
 - Larry reads the result and summarizes it back into your task system.
 
 This bridge must not duplicate your task system's SOPs, tracker, agent roster, or memory.

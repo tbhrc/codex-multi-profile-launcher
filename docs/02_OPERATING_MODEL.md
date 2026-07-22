@@ -13,15 +13,15 @@ Larry in Claude Code:
 - receives the user request
 - creates or updates the task
 - decides whether Codex dispatch is worth it
-- chooses `C1` or `C2`
+- defaults delegated work to C2 + Anti-Gravity, with Claude Code as an explicit alternate
 - reads the Codex result
 - updates your task system and reports to the user
 
 ## Codex Worker Roles
 
-`C1 / Codex Business` is the default for production implementation and hardening.
+`C1 / Codex Business` is an explicit legacy/isolated route, never an implicit fallback.
 
-`C2 / Codex David` is the default for bootstrap experiments, prototypes, and independent review.
+`C2 / Codex David` with Anti-Gravity and an explicit model is the global delegated-work default. Claude Code is available only through explicit provider selection.
 
 ## Dispatch Fit
 

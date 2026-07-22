@@ -16,6 +16,10 @@ The external task workspace or orchestrator owns task intake, routing, tracker u
 
 ## Routing map
 
+**Global default:** dispatch through C2 with Anti-Gravity and an explicit model. Claude
+Code is available through `wrappers/delegate_to_local_cli.sh --provider claude`; C1 is
+never an implicit fallback.
+
 Use C1 when the task has a clear production objective and needs implementation, integration, hardening, cleanup, or test fixes.
 
 Use C2 when the task must continue in the original David profile and preserve its existing projects, chats, and task context. Use it for general work, investigation, and review in that profile.
@@ -38,3 +42,4 @@ Keep the work inline when it is tiny, highly conversational, or depends on rapid
 - Fresh-session handoff: [`docs/05_FRESH_SESSION_HANDOFF.md`](../docs/05_FRESH_SESSION_HANDOFF.md)
 - Maintenance SOP: [`docs/06_MAINTENANCE_SOP.md`](../docs/06_MAINTENANCE_SOP.md)
 - Dispatch wrapper: [`wrappers/delegate_to_codex.sh`](../wrappers/delegate_to_codex.sh)
+- Local CLI dispatcher: [`wrappers/delegate_to_local_cli.sh`](../wrappers/delegate_to_local_cli.sh)
