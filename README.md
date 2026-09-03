@@ -99,6 +99,10 @@ This is what the two isolated launcher profiles look like running side by side. 
 
 This repository was created through a real Codex-assisted implementation session. The captured usage report is available in [docs/TELEMETRY_REPORT.md](docs/TELEMETRY_REPORT.md).
 
+## Maintainer Handoff
+
+Future maintainers and coding agents should read [docs/05_FRESH_SESSION_HANDOFF.md](docs/05_FRESH_SESSION_HANDOFF.md) and [docs/06_MAINTENANCE_SOP.md](docs/06_MAINTENANCE_SOP.md) before investigating or changing this repo. These documents capture the implementation decisions, lessons learned, validation commands, runtime caveats, and repeatable maintenance workflow.
+
 ## Requirements
 
 - macOS
@@ -225,6 +229,18 @@ You should see the app running with:
 ```text
 --user-data-dir=/Users/<you>/Library/Application Support/Codex-C1-Business
 ```
+
+## Backup and transfer between profiles
+
+If both profiles are used for active work, local Codex session history, memories, skills, prompts, MCP templates, and project trust settings can be backed up and merged into the other profile. The desktop app’s named project containers and sidebar project index are not reliably portable, so the destination profile may need its local project re-added in the UI even though the project folder and chat history are preserved.
+
+See [Backup, Transfer, and Merge Between Codex Profiles](docs/04_BACKUP_TRANSFER_MERGE.md) for the data boundaries and safe migration rules.
+
+The repository also includes `scripts/profile-sync.sh` with `backup`, `merge`, and `verify` commands for repeatable local continuity migrations.
+
+For ongoing local continuity, `scripts/install-profile-sync-watch.sh` installs an optional five-minute macOS background watcher. It synchronizes safe session/history/memory artifacts bidirectionally and skips runs without recent changes; it does not copy credentials, desktop session state, or live SQLite databases.
+
+For the worker roster and routing map, see [`agents/AGENT_INDEX.md`](agents/AGENT_INDEX.md).
 
 ## Security Notes
 
