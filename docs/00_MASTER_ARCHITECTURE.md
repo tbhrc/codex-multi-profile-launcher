@@ -1,158 +1,65 @@
-# Architecture
+# Codex Multi-Profile Launcher Architecture
 
-## Summary
+## Purpose
 
-This package is a **Codex multi-profile launcher**. Its job is to let the TBHRC GitHub control plane delegate selected work to one of two isolated Codex profiles without turning Codex into a separate operating system.
-
-The owning GitHub repository and Issue/PR remain the system of record.
+Provide two exact Codex identities on David's Mac without creating a second operating system.
 
 ```text
-Founder/user request
-  |
-  v
-canonical Skill + owning GitHub Issue/PR
-  |
-  v
-authorised controller/orchestrator
-  |
-  +--> normal provider/runtime when sufficient
-  |
-  +--> AI Engine when trusted Mac-local execution is required
-         |
-         +--> Codex Bridge
-                |
-                +--> C1 / Codex Business  (~/.codex-business)
-                +--> C2 / Codex David     (~/.codex-david)
+authorised controller
+→ choose C1 or C2 when Codex is useful
+→ exact CODEX_HOME
+→ bounded workspace execution
+→ result or unavailable state
+→ controller continues/reroutes
 ```
 
-The package also provides an explicit GitHub PR review entry point. It does not change the native OpenAI `@codex` integration:
+GitHub may preserve durable work/evidence, but an Issue/PR is **not runtime permission** for ordinary authorised execution.
 
-```text
-GitHub PR comment
-  |
-  +--> @codex-business review -> trusted router -> C1
-  |
-  +--> @codex-david review    -> trusted router -> C2
-```
+## Worker map
 
-## Boundaries
+| Code | Worker | Codex home |
+|---|---|---|
+| `C1` | Codex Business | `~/.codex-business` |
+| `C2` | Codex David | `~/.codex-david` |
 
-### GitHub / Controller Owns
+The identity boundary is real: never silently map C1 to C2 or vice versa. If the selected seat is unavailable or out of credits, return that state immediately. The controller may then choose another already-authorised provider/seat. One unavailable seat is not a system-wide stop.
 
-- task intake and durable work orders
-- provider/seat routing and budget decisions
-- visible status
-- review and approval
-- applying verified patches/results
-- merges, deployments and other external authority
-- reusable method through canonical Skills
+## What this bridge owns
 
-### This Bridge Owns
+- exact C1/C2 identity mapping;
+- separate `CODEX_HOME` directories;
+- bounded local Codex execution;
+- explicit PR-review profile selection;
+- concise local execution evidence when useful.
 
-- `C1` and `C2` worker identity
-- separate `CODEX_HOME` directories
-- exact profile-specific launcher mapping
-- deterministic bounded `codex exec` calls
-- explicit GitHub review profile selection
-- local execution logs and result files
+It does not own task intake, business truth, deployment authority, credential administration or orchestration.
 
-## Worker Map
+## Authentication boundary
 
-| Code | Worker | Codex home | Runtime rule |
-|---|---|---|---|
-| `C1` | Codex Business | `~/.codex-business` | Explicit selection only; currently fail closed when Business credits are exhausted. |
-| `C2` | Codex David | `~/.codex-david` | Explicit selection only; real model execution is proven. |
+Each profile may contain its own `auth.json`, config and history. Never read, copy, print, move, upload or commit profile credential contents.
 
-Neither seat is a permanent priority. The controller chooses a seat/provider based on task fit, authority and live capacity. This bridge never rotates accounts automatically.
+GUI profiles may also use separate application-data directories. This isolation exists to preserve identity, not to manufacture workflow gates.
 
-## Dispatch Rule
+## Automated execution boundary
 
-Dispatch Codex only when the task economics make sense:
+Use the current tested launcher configuration that keeps Codex inside the assigned workspace and prevents ambient profile configuration from silently changing execution behaviour. Do not add another sandbox, approval layer, credential hop or proof ceremony unless a concrete new threat demonstrates a material gap.
 
-- self-contained coding task;
-- mechanical change with a clear checklist;
-- independent review of a diff or implementation;
-- work that benefits from separate context;
-- a bounded local implementation task where the controller retains external authority.
+The selected seat may fail for that invocation; return the failure once. Never silently rotate identities inside the launcher.
 
-Work inline when the task is tiny, judgment-heavy, or already executable through a simpler authorised route.
+## Dispatch
 
-## Authentication Model
+Use Codex when it adds leverage: bounded coding, mechanical changes, independent review, or separate-context implementation. Work inline when that is simpler.
 
-Each Codex worker has its own home:
+No Issue creation, branch, PR, preflight sequence or historical proof is required merely to invoke Codex. Use those objects only when the actual work benefits from continuity, review or isolation.
 
-```text
-~/.codex-business   # C1
-~/.codex-david      # C2
-```
+## PR review
 
-Each home may contain its own `auth.json`, config, logs, and history. This repository must never contain, inspect or move those credentials.
+A supported explicit review selector chooses the exact profile. PR code/content is untrusted review input and must not be executed merely to review it. The router may verify the requester is authorised to post the review; that is a real external-write identity boundary.
 
-For automated execution, `CODEX_HOME` supplies the selected identity/authentication while ambient user config is ignored. Trusted launcher code supplies the execution policy explicitly.
+If the selected profile is unavailable, return that state and let the controller reroute. Do not repeatedly retry known exhausted capacity.
 
-The desktop launchers also separate the GUI app data:
+## Consequential actions
 
-```text
-~/Library/Application Support/Codex-C1-Business
-~/Library/Application Support/Codex-C2-David
-```
+A Codex worker may produce local files, patches, analysis and evidence. Deployment, sending messages, credential changes, destructive external mutation, spend, private-data disclosure or other genuinely consequential actions require the authority appropriate to that action.
 
-The normal ChatGPT/Codex app continues to use `~/Library/Application Support/Codex`.
-
-## Automated Execution Boundary
-
-General work orders and routed PR reviews share one fixed execution policy:
-
-```text
-codex exec
-  --strict-config
-  --ignore-user-config
-  --ephemeral
-  --skip-git-repo-check
-  -C <bounded-workspace>
-  -c default_permissions=":workspace"
-  -c approval_policy="never"
-  ...
-```
-
-Properties:
-
-- exact C1/C2 identity selected through `CODEX_HOME`;
-- only the supplied workspace is writable through the built-in `:workspace` profile;
-- ambient profile configuration cannot silently widen authority;
-- no interactive approval escape hatch;
-- no persistent Codex session from automation;
-- no legacy `--sandbox` mode;
-- selected-seat failure is terminal for that invocation; no hidden fallback.
-
-## Normal Work-Order Execution
-
-1. Create/update the real work order in the owning GitHub repository.
-2. Apply the canonical Skill and decide Codex dispatch is useful.
-3. The controller explicitly chooses `C1` or `C2`.
-4. AI Engine reaches the trusted Mac runtime when remote dispatch is required.
-5. Invoke `wrappers/delegate_to_codex.sh` against a bounded worktree/workspace.
-6. The wrapper writes execution evidence under `runtime/outputs/`.
-7. The controller verifies the result and continues the owning repository's normal PR/merge lifecycle.
-
-The Codex worker does not independently push, merge, deploy, send messages or mutate external production systems.
-
-## GitHub Review Execution
-
-1. An authorized maintainer comments an exact supported review command on a PR.
-2. The default-branch workflow performs a cheap author-association filter.
-3. A reusable trusted workflow runs on a dedicated `codex-profile-router` self-hosted runner.
-4. The router verifies the commenter has `write`, `maintain`, or `admin` repository permission.
-5. The router fetches PR metadata and the unified diff through GitHub's API; it never checks out or executes the PR branch.
-6. The exact C1/C2 `CODEX_HOME` is selected from trusted code.
-7. Codex runs in an empty disposable `:workspace` using the fixed no-approval, ignored-user-config, ephemeral execution boundary and returns structured review JSON.
-8. The router validates the result and posts a GitHub COMMENT review.
-9. Failure stops on the selected identity; there is no automatic fallback or quota-based rotation.
-
-See `docs/04_GITHUB_REVIEW_ROUTER.md` for the operational and security contract.
-
-## Design Principle
-
-The bridge should stay boring. If a feature duplicates the GitHub control plane, canonical Skills, or AI Engine privileged-runtime ownership, it does not belong here.
-
-Explicit profile routing is allowed; automatic account cycling, credential movement and implicit authority expansion are not.
+**Design principle: preserve identity, protect secrets, keep the route short.**
