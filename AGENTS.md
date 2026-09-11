@@ -29,7 +29,7 @@ Do not turn profile isolation into workflow ceremony.
 
 Read only the file(s) needed for the requested change plus current `README.md` when architecture context is actually needed. Run the smallest relevant validation/test after the change and inspect Git status for unrelated edits.
 
-Do **not** require reading every architecture document, runtime state file, or controlling Issue before ordinary bounded work. Issues preserve continuity and are not runtime permission, but a master controlling Issue backs substantive or durable work (reuse, or create if none exists org-wide).
+Do **not** require reading every architecture document, runtime state file, or Issue before ordinary bounded work. Use an Issue only when it materially improves continuity or coordination; it is never runtime permission.
 
 ## Rules
 
