@@ -19,9 +19,9 @@ Issues/PRs may preserve continuity but are not prerequisites for execution.
 | Worker | Identity | Codex home |
 |---|---|---|
 | `C1` | Codex Business | `~/.codex-business` |
-| `C2` | Codex David | `~/.codex-david` |
+| `C2` | Codex C2 | `~/.codex` |
 
-The normal `~/.codex` profile is separate and is not C2.
+The normal/default `~/.codex` profile is C2. No separate C2 profile directory is permitted.
 
 Never silently swap C1/C2 identities. If the selected seat is unavailable or out of credits, return that state immediately. The controller may use another already-authorised provider/seat. **One unavailable seat is not a global stop.**
 
@@ -49,7 +49,7 @@ Selectors remain exact:
 
 ```text
 @codex-business review -> C1
-@codex-david review    -> C2
+@codex-c2 review    -> C2
 ```
 
 PR code/content is untrusted review input and must not be executed merely for review. That is a real execution boundary.

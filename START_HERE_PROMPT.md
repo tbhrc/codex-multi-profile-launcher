@@ -1,8 +1,8 @@
 # Start Here
 
-This package is the local Codex C1/C2 profile-isolation and execution bridge.
+This package is the local Codex C1/C2 execution bridge: C1 is isolated; C2 is the normal/default Codex profile.
 
-## 1. Bootstrap the two isolated Codex homes
+## 1. Bootstrap C1; preserve default C2
 
 ```bash
 cd codex-multi-profile-launcher
@@ -13,7 +13,7 @@ bash scripts/bootstrap.sh
 
 ```bash
 bash scripts/auth-codex-business.sh   # C1 -> ~/.codex-business
-bash scripts/auth-codex-david.sh      # C2 -> ~/.codex-david
+bash scripts/auth-codex-c2.sh         # C2 -> default ~/.codex
 ```
 
 Never copy authentication between profiles and never read/print `auth.json`.
@@ -49,7 +49,7 @@ Worker mapping is fixed:
 
 ```text
 C1 = Codex Business = ~/.codex-business
-C2 = Codex David    = ~/.codex-david
+C2 = default Codex = ~/.codex
 ```
 
 Do not use a permanent C1-first/C2-second hierarchy. The controller explicitly selects a profile based on task fit, permissions, current availability and remaining budget. The launcher never performs automatic account rotation or silent fallback.

@@ -7,9 +7,9 @@ This feature adds **explicit** GitHub pull-request review routing to the two alr
 | Command | Worker | Local Codex home |
 |---|---|---|
 | `@codex-business review` | C1 / Codex Business | `~/.codex-business` |
-| `@codex-david review` | C2 / Codex David | `~/.codex-david` |
+| `@codex-c2 review` | C2 / Codex C2 | `~/.codex` |
 
-Slash aliases are also accepted: `/codex-business review` and `/codex-david review`.
+Slash aliases are also accepted: `/codex-business review` and `/codex-c2 review`.
 
 This is not account rotation. The requested profile is deterministic, there is no quota inspection, and failure never falls back to the other profile.
 
@@ -20,7 +20,7 @@ The trusted workflow runs on the repository default branch and uses a dedicated 
 Important boundaries:
 
 - `auth.json` is never read, copied, printed, uploaded, or stored in GitHub Actions secrets.
-- Only `C1 -> ~/.codex-business` and `C2 -> ~/.codex-david` are allowed.
+- Only `C1 -> ~/.codex-business` and `C2 -> ~/.codex` are allowed.
 - GitHub comment text is parsed as data and is never interpolated into a shell command.
 - A requester must pass the workflow association prefilter and the router's GitHub collaborator-permission check (`write`, `maintain`, or `admin`).
 - The model's advisory `verdict` never becomes a GitHub APPROVE or REQUEST_CHANGES action automatically; the router always posts a COMMENT review.
@@ -31,16 +31,16 @@ Important boundaries:
 ## Supported commands
 
 ```text
-@codex-david review
+@codex-c2 review
 @codex-business review
-/codex-david review
+/codex-c2 review
 /codex-business review
 ```
 
 Optional review modes:
 
 ```text
-@codex-david security review
+@codex-c2 security review
 @codex-business review focus: authentication regressions
 ```
 
@@ -159,7 +159,7 @@ If the selected profile is missing, logged out, out of credits, times out, retur
 Example:
 
 ```text
-Codex David review could not complete: Codex David local profile is not authenticated on this runner. No alternate Codex profile was used.
+Codex C2 review could not complete: Codex C2 local profile is not authenticated on this runner. No alternate Codex profile was used.
 ```
 
 It never silently retries with the other paid account.

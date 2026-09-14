@@ -24,9 +24,9 @@ fi
 
 case "$WORKER" in
   C2)
-    export CODEX_HOME="$HOME/.codex-david"
+    export CODEX_HOME="$HOME/.codex"
     export CODEX_BRIDGE_WORKER_ID="C2"
-    export CODEX_BRIDGE_WORKER_NAME="Codex David"
+    export CODEX_BRIDGE_WORKER_NAME="Codex C2"
     ;;
   C1)
     export CODEX_HOME="$HOME/.codex-business"

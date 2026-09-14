@@ -11,7 +11,7 @@ This creates the two Codex homes if missing:
 
 ```text
 ~/.codex-business
-~/.codex-david
+~/.codex
 ```
 
 It copies safe config files only. It does not create or copy credentials.
@@ -24,10 +24,10 @@ C1 / Codex Business:
 bash scripts/auth-codex-business.sh
 ```
 
-C2 / Codex David:
+C2 / Codex C2:
 
 ```bash
-bash scripts/auth-codex-david.sh
+bash scripts/auth-codex-c2.sh
 ```
 
 Never copy `auth.json` between homes or into this repository.
@@ -44,17 +44,17 @@ Login status proves authentication only; provider credits/capacity are separate 
 
 ```bash
 bash scripts/start-codex-business.sh   # C1
-bash scripts/start-codex-david.sh      # C2
+bash scripts/start-codex-c2.sh      # C2
 ```
 
 Aliases:
 
 ```text
 C1 = Codex Business = ~/.codex-business
-C2 = Codex David    = ~/.codex-david
+C2 = Codex C2    = ~/.codex
 ```
 
-The normal/default `~/.codex` profile is separate and is not C2.
+The normal/default `~/.codex` profile is C2. Do not create a second C2 home.
 
 The controller selects a seat/provider based on task fit and live availability. The launcher never silently swaps identities.
 
@@ -85,7 +85,7 @@ Check the exact profiles directly:
 
 ```bash
 CODEX_HOME="$HOME/.codex-business" codex login status
-CODEX_HOME="$HOME/.codex-david" codex login status
+CODEX_HOME="$HOME/.codex" codex login status
 ```
 
 If C1 is authenticated but out of credits, return that state once. **Do not silently change C1 into C2 inside the launcher.** The controller may immediately reroute the work to another authorised provider/seat. One exhausted seat is not a global blocker.

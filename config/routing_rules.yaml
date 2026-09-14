@@ -13,8 +13,8 @@ workers:
       - test fixes
       - explicit pull-request review
   C2:
-    name: Codex David
-    codex_home: ~/.codex-david
+    name: Codex C2
+    codex_home: ~/.codex
     suitable_for:
       - implementation
       - prototypes

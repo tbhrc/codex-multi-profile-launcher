@@ -16,8 +16,8 @@ jobs:
       (github.event.comment.author_association == 'OWNER' ||
        github.event.comment.author_association == 'MEMBER' ||
        github.event.comment.author_association == 'COLLABORATOR') &&
-      (startsWith(github.event.comment.body, '@codex-david ') ||
+      (startsWith(github.event.comment.body, '@codex-c2 ') ||
        startsWith(github.event.comment.body, '@codex-business ') ||
-       startsWith(github.event.comment.body, '/codex-david ') ||
+       startsWith(github.event.comment.body, '/codex-c2 ') ||
        startsWith(github.event.comment.body, '/codex-business '))
     uses: ./.github/workflows/codex-profile-review-reusable.yml

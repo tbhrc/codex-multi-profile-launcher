@@ -20,6 +20,6 @@ check_profile() {
 }
 
 check_profile "Codex Business" "$HOME/.codex-business"
-check_profile "Codex David" "$HOME/.codex-david"
+check_profile "Codex C2" "$HOME/.codex"
 
 echo "Codex profile review runner is ready."

@@ -20,7 +20,7 @@ GitHub may preserve durable work/evidence, but an Issue/PR is **not runtime perm
 | Code | Worker | Codex home |
 |---|---|---|
 | `C1` | Codex Business | `~/.codex-business` |
-| `C2` | Codex David | `~/.codex-david` |
+| `C2` | Codex C2 | `~/.codex` |
 
 The identity boundary is real: never silently map C1 to C2 or vice versa. If the selected seat is unavailable or out of credits, return that state immediately. The controller may then choose another already-authorised provider/seat. One unavailable seat is not a system-wide stop.
 

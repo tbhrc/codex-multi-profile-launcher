@@ -7,7 +7,7 @@ Before work, confirm the C1 identity, read the assigned task and relevant projec
 Rules:
 
 - perform the bounded assignment;
-- do not touch `~/.codex-david`;
+- do not touch `~/.codex`;
 - do not read, print, copy, move, upload or modify credentials or `auth.json`;
 - never silently switch profile identity;
 - deployment, sends, destructive external mutation, credential changes, spend, private-data disclosure or other consequential actions require separate appropriate authority;

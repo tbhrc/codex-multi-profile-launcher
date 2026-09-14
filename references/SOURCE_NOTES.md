@@ -15,7 +15,7 @@ This launcher retains only the local Codex profile-isolation/runtime capability:
 
 ```text
 C1 / Codex Business -> ~/.codex-business
-C2 / Codex David    -> ~/.codex-david
+C2 / Codex C2    -> ~/.codex
 ```
 
 General GitHub-controlled C1/C2 work-order exposure is tracked in `tbhrc/ai-engine#44`. Canonical provider-failover discovery is tracked in `tbhrc/skills#224`.

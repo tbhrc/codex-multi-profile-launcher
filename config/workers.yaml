@@ -21,9 +21,9 @@ workers:
     max_concurrent_tasks: 1
 
   - id: C2
-    name: Codex David
+    name: Codex C2
     runtime: codex
-    codex_home: ~/.codex-david
+    codex_home: ~/.codex
     primary_roles:
       - implementation
       - prototype

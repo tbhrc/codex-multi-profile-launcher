@@ -21,9 +21,9 @@ Issues/PRs may preserve durable work/evidence but are not prerequisites for loca
 | Alias | Identity | CODEX_HOME |
 |---|---|---|
 | `C1` | Codex Business | `~/.codex-business` |
-| `C2` | Codex David | `~/.codex-david` |
+| `C2` | Codex C2 | `~/.codex` |
 
-`~/.codex` is separate and is not C2.
+`~/.codex` is C2; there is no separate C2 home.
 
 The launcher never silently swaps identities.
 
@@ -56,7 +56,7 @@ The tested workspace/profile isolation protects real file/identity boundaries. D
 
 ```text
 @codex-business review -> C1
-@codex-david review    -> C2
+@codex-c2 review    -> C2
 ```
 
 The router may verify the requester has authority to post the external review. It must not execute PR code or silently change profile identity.

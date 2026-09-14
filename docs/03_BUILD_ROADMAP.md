@@ -13,11 +13,11 @@ Exit: docs, config, scripts and tests agree on the lean bridge boundary.
 ## Stage 1 - Reliable Local Profiles
 
 - bootstrap `~/.codex-business` for C1;
-- bootstrap `~/.codex-david` for C2;
+- preserve the existing default `~/.codex` as C2; never create a second C2 home;
 - verify each profile can report login status;
-- preserve profile isolation and never move credentials between homes.
+- preserve C1/C2 identity separation and never move credentials between homes.
 
-Exit: both profiles can be started intentionally without credential mixing.
+Exit: C1 can be started intentionally and C2 remains the default profile, without credential mixing.
 
 ## Stage 2 - Local Task Execution
 

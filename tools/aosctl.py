@@ -14,7 +14,7 @@ RUNTIME = ROOT / "runtime"
 ACTIVE_WORKER = RUNTIME / "active_worker.json"
 VALID_WORKERS = {
     "C1": "Codex Business",
-    "C2": "Codex David",
+    "C2": "Codex C2",
 }
 
 
@@ -52,22 +52,20 @@ def cmd_validate(args: argparse.Namespace) -> None:
         "docs/04_GITHUB_REVIEW_ROUTER.md",
         "agents/claude-orchestrator/AGENT.md",
         "agents/codex-business/AGENT.md",
-        "agents/codex-david/AGENT.md",
+        "agents/codex-c2/AGENT.md",
         "config/workers.yaml",
         "config/routing_rules.yaml",
         "config/project_config.toml",
         "config/codex-business.config.toml",
-        "config/codex-david.config.toml",
-        "prompts/00_CODEX_DAVID_BOOTSTRAP.md",
+        "prompts/00_CODEX_C2_BOOTSTRAP.md",
         "prompts/01_CODEX_BUSINESS_CONTINUE.md",
         "prompts/02_CLAUDE_ORCHESTRATOR.md",
         "prompts/github-pr-review.md",
         "schemas/result.schema.json",
         "schemas/github-review-result.schema.json",
         "scripts/launch-codex-business-desktop.sh",
-        "scripts/launch-codex-david-desktop.sh",
         "scripts/start-codex-business.sh",
-        "scripts/start-codex-david.sh",
+        "scripts/start-codex-c2.sh",
         "scripts/verify-review-runner.sh",
         "wrappers/delegate_to_codex.sh",
         "references/SOURCE_NOTES.md",

@@ -1,14 +1,14 @@
-# C2 - Codex David
+# C2 - Default Codex
 
 ## Identity
 
-`C2` is the isolated Codex David identity using:
+`C2` is the normal/default Codex identity using:
 
 ```text
-CODEX_HOME=~/.codex-david
+CODEX_HOME=~/.codex
 ```
 
-The normal/default `~/.codex` profile may also exist, but it is not C2.
+`~/.codex` is C2. Do not create a second C2 home or alias.
 
 ## Role
 

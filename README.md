@@ -1,16 +1,16 @@
 # Codex Multi-Profile Launcher for macOS
 
-Run multiple isolated Codex desktop profiles on the same Mac without logging in and out.
+Run C1 as an isolated Business profile while C2 remains the normal/default Codex profile on the same Mac.
 
 Unofficial community project: it may be changed or taken down at OpenAI's request, so feel free to fork it now if it is useful to you.
 
-This project creates Dock-friendly launchers for separate ChatGPT/Codex desktop app profiles. Each launcher gets its own:
+This project creates one Dock-friendly isolated launcher for C1. C2 is the normal/default ChatGPT/Codex profile.
 
 - `CODEX_HOME`
 - ChatGPT/Codex desktop app data directory
 - login session
 - Dock icon
-- profile label, such as `C1` and `C2`
+- profile label for `C1`; the standard app is `C2`
 
 It is useful if you want:
 
@@ -31,7 +31,7 @@ If you want a coding agent to install this for you, copy this prompt into Claude
 You are helping me install the Codex Multi-Profile Launcher for macOS.
 
 Goal:
-Create two isolated Codex desktop launchers so I can run separate Codex/ChatGPT desktop profiles at the same time without logging in and out.
+Create one isolated C1 Business launcher while preserving the normal/default ChatGPT/Codex app as C2.
 
 Repository:
 https://github.com/tbhrc/codex-multi-profile-launcher
@@ -43,40 +43,36 @@ Please do the following:
 4. Clone the repository if it is not already present.
 5. Run bash scripts/bootstrap.sh from the repository root.
 6. Run bash scripts/install-macos-launchers.sh from the repository root.
-7. Confirm that these apps were created:
-   - ~/Applications/Codex C1 Business.app
-   - ~/Applications/Codex C2 David.app
+7. Confirm that `~/Applications/Codex C1 Business.app` was created. The installed `/Applications/ChatGPT.app` remains C2.
 8. Open C1 with:
    open -n "$HOME/Applications/Codex C1 Business.app"
 9. Verify the C1 process uses:
    --user-data-dir=$HOME/Library/Application Support/Codex-C1-Business
-10. Tell me to sign into the account I want for C1, then repeat the same test for C2 if I ask.
+10. Tell me to sign into the Business account for C1. Do not create or migrate a separate C2 home; C2 is the default app/profile.
 
 Important safety rules:
 - Do not read, print, copy, or move any auth.json file.
 - Do not copy credentials between profiles.
-- Do not modify my default ~/.codex profile unless I explicitly ask.
+- Treat the default `~/.codex` profile as C2 and do not replace or clone it.
 - Do not delete existing app data.
 - If /Applications/ChatGPT.app is missing, stop and tell me exactly what path you checked.
 
 Expected result:
-I should have three usable desktop profiles:
-- the normal ChatGPT/Codex app
-- C1, using ~/.codex-business and ~/Library/Application Support/Codex-C1-Business
-- C2, using ~/.codex-david and ~/Library/Application Support/Codex-C2-David
+I should have exactly two intended Codex profiles:
+- C1 Business: `~/.codex-business` + `~/Library/Application Support/Codex-C1-Business`
+- C2 default: `~/.codex` + `~/Library/Application Support/Codex`
 ```
 
-After the agent finishes, drag `Codex C1 Business.app` and `Codex C2 David.app` from `~/Applications` to your Dock.
+After the agent finishes, add `Codex C1 Business.app` to your Dock if useful. C2 remains the normal installed ChatGPT app.
 
 ## What Problem This Solves
 
 The normal ChatGPT/Codex desktop app uses one default desktop profile. If you switch accounts inside that app, you interrupt the current login and workspace.
 
-This repository creates two additional launcher apps:
+This repository creates one additional launcher app:
 
 ```text
 Codex C1 Business.app
-Codex C2 David.app
 ```
 
 Each launcher starts the installed ChatGPT/Codex desktop app with a different runtime boundary.
@@ -84,14 +80,13 @@ Each launcher starts the installed ChatGPT/Codex desktop app with a different ru
 | Launcher | Codex CLI home | Desktop app data |
 |---|---|---|
 | Codex C1 Business | `~/.codex-business` | `~/Library/Application Support/Codex-C1-Business` |
-| Codex C2 David | `~/.codex-david` | `~/Library/Application Support/Codex-C2-David` |
-| Regular ChatGPT/Codex app | `~/.codex` | `~/Library/Application Support/Codex` |
+| C2 / Regular ChatGPT-Codex app | `~/.codex` | `~/Library/Application Support/Codex` |
 
-The result is three distinct profiles: the original app plus C1 and C2.
+The result is two intended profiles: isolated C1 plus the original/default app as C2.
 
 ## Example: Side-by-Side Profiles
 
-This is what the two isolated launcher profiles look like running side by side. The Dock remains visible so you can see C1 as its own launcher app. Account handles are masked in the screenshot.
+This historical screenshot shows the earlier two-launcher experiment. Current operation uses one isolated C1 launcher and the normal/default app as C2.
 
 ![C1 and C2 Codex desktop profiles running side by side](docs/assets/codex-c1-c2-side-by-side.png)
 
@@ -122,39 +117,37 @@ git clone https://github.com/tbhrc/codex-multi-profile-launcher.git
 cd codex-multi-profile-launcher
 ```
 
-Bootstrap the isolated Codex homes:
+Bootstrap the C1 isolated home (C2 already uses the default home):
 
 ```bash
 bash scripts/bootstrap.sh
 ```
 
-Create the Dock launcher apps:
+Create the C1 Dock launcher:
 
 ```bash
 bash scripts/install-macos-launchers.sh
 ```
 
-Open `~/Applications`, then drag these apps to your Dock:
+Open `~/Applications`, then add the C1 launcher to your Dock if useful:
 
 ```text
 Codex C1 Business.app
-Codex C2 David.app
 ```
 
-Launch each one and sign into the account you want for that profile.
+Use the C1 launcher for Business. Use the normal ChatGPT/Codex app for C2.
 
 ## Custom Names
 
 The default labels are:
 
 - `C1` = Codex Business
-- `C2` = Codex David
+- `C2` = normal/default Codex profile
 
 You can customize the launcher names during installation:
 
 ```bash
 C1_APP_NAME="Codex C1 Work" \
-C2_APP_NAME="Codex C2 Personal" \
 bash scripts/install-macos-launchers.sh
 ```
 
@@ -172,7 +165,7 @@ CHATGPT_APP="/path/to/ChatGPT.app" bash scripts/install-macos-launchers.sh
 
 ## How It Works
 
-The launchers do not copy your credentials. They only start the installed app with separate environment and Chromium/Electron user-data paths.
+The C1 launcher does not copy credentials; it starts the installed app with a separate C1 environment and user-data path. C2 continues to use the default app state.
 
 For C1:
 
@@ -182,27 +175,18 @@ exec /Applications/ChatGPT.app/Contents/MacOS/ChatGPT \
   --user-data-dir="$HOME/Library/Application Support/Codex-C1-Business"
 ```
 
-For C2:
-
-```bash
-export CODEX_HOME="$HOME/.codex-david"
-exec /Applications/ChatGPT.app/Contents/MacOS/ChatGPT \
-  --user-data-dir="$HOME/Library/Application Support/Codex-C2-David"
-```
-
-The separate `--user-data-dir` is the important desktop-app part. `CODEX_HOME` isolates the Codex CLI/config/runtime side.
+For C2, launch the normal installed ChatGPT/Codex app. Its Codex home is `~/.codex` and its app data is `~/Library/Application Support/Codex`. No second C2 launcher or home is created.
 
 ## Scripts
 
 | Script | Purpose |
 |---|---|
-| `scripts/bootstrap.sh` | Creates the isolated Codex home folders and safe config files |
-| `scripts/install-macos-launchers.sh` | Creates the two `.app` launchers and custom icons |
+| `scripts/bootstrap.sh` | Creates/validates the isolated C1 home; leaves C2 default `~/.codex` intact |
+| `scripts/install-macos-launchers.sh` | Creates the C1 `.app` launcher and icon |
 | `scripts/launch-codex-business-desktop.sh` | Launches C1 desktop profile |
-| `scripts/launch-codex-david-desktop.sh` | Launches C2 desktop profile |
 | `scripts/auth-codex-business.sh` | Runs CLI login for C1 |
-| `scripts/auth-codex-david.sh` | Runs CLI login for C2 |
-| `scripts/status.sh` | Shows login status for both isolated homes |
+| `scripts/auth-codex-c2.sh` | Runs CLI login for C2 |
+| `scripts/status.sh` | Shows login status for C1 and default C2 |
 
 ## Testing
 

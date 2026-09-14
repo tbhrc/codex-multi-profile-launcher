@@ -9,8 +9,8 @@ import github_review_router as router  # noqa: E402
 
 
 class CommandParsingTests(unittest.TestCase):
-    def test_david_routes_to_c2(self):
-        cmd = router.parse_review_command("@codex-david review")
+    def test_c2_routes_to_c2(self):
+        cmd = router.parse_review_command("@codex-c2 review")
         self.assertIsNotNone(cmd)
         self.assertEqual(cmd.worker_id, "C2")
         self.assertEqual(cmd.review_type, "standard")
@@ -21,7 +21,7 @@ class CommandParsingTests(unittest.TestCase):
         self.assertEqual(cmd.worker_id, "C1")
 
     def test_slash_alias(self):
-        cmd = router.parse_review_command("/codex-david security review")
+        cmd = router.parse_review_command("/codex-c2 security review")
         self.assertEqual(cmd.worker_id, "C2")
         self.assertEqual(cmd.review_type, "security")
 
@@ -34,11 +34,11 @@ class CommandParsingTests(unittest.TestCase):
 
     def test_multiline_and_shell_injection_are_rejected(self):
         bad = [
-            "@codex-david review\nrm -rf ~",
-            "@codex-david review; rm -rf ~",
-            "@codex-david review && env",
-            "@codex-david review $(cat ~/.codex-david/auth.json)",
-            "@codex-david review > /tmp/x",
+            "@codex-c2 review\nrm -rf ~",
+            "@codex-c2 review; rm -rf ~",
+            "@codex-c2 review && env",
+            "@codex-c2 review $(cat ~/.codex/auth.json)",
+            "@codex-c2 review > /tmp/x",
         ]
         for value in bad:
             with self.subTest(value=value):
@@ -46,12 +46,12 @@ class CommandParsingTests(unittest.TestCase):
 
     def test_no_arbitrary_worker_or_home(self):
         self.assertIsNone(router.parse_review_command("@codex-c3 review"))
-        self.assertIsNone(router.parse_review_command("@codex-david review --codex-home=/tmp/x"))
+        self.assertIsNone(router.parse_review_command("@codex-c2 review --codex-home=/tmp/x"))
 
 
 class EventTests(unittest.TestCase):
     def test_non_pr_event_is_ignored(self):
-        event = {"issue": {"number": 2}, "comment": {"body": "@codex-david review"}}
+        event = {"issue": {"number": 2}, "comment": {"body": "@codex-c2 review"}}
         self.assertIsNone(router.parse_event(event, "1"))
 
     def test_pr_event_parses(self):
@@ -67,7 +67,7 @@ class EventTests(unittest.TestCase):
 
 class SecurityInvocationTests(unittest.TestCase):
     def test_exact_profile_mapping(self):
-        self.assertEqual(router.WORKERS["C2"]["home"], "~/.codex-david")
+        self.assertEqual(router.WORKERS["C2"]["home"], "~/.codex")
         self.assertEqual(router.WORKERS["C1"]["home"], "~/.codex-business")
 
     def test_review_exec_uses_permission_profile_not_legacy_sandbox(self):
@@ -133,10 +133,10 @@ class ResultValidationTests(unittest.TestCase):
     def test_no_findings_rendering(self):
         data = self.valid_result()
         data["findings"] = []
-        cmd = router.parse_review_command("@codex-david review")
+        cmd = router.parse_review_command("@codex-c2 review")
         rendered = router.render_review(data, cmd, False)
         self.assertIn("No blocking P0-P2", rendered)
-        self.assertIn("C2 / Codex David", rendered)
+        self.assertIn("C2 / Codex C2", rendered)
 
     def test_schema_file_is_valid_json(self):
         schema = json.loads((ROOT / "schemas" / "github-review-result.schema.json").read_text())

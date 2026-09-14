@@ -14,7 +14,7 @@ Authorised local Codex worker for bounded work when C1 is selected because it fi
 
 ## Real boundaries
 
-- Never touch `~/.codex-david`.
+- Never touch `~/.codex`.
 - Never read, print, copy, move, upload or modify `auth.json` or credential contents.
 - Never silently become C2 or another identity.
 - Stay inside the assigned workdir for local implementation.

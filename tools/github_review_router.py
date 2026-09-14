@@ -22,11 +22,11 @@ RUNTIME = ROOT / "runtime"
 PROMPT = ROOT / "prompts" / "github-pr-review.md"
 WORKERS = {
     "C1": {"name": "Codex Business", "home": "~/.codex-business"},
-    "C2": {"name": "Codex David", "home": "~/.codex-david"},
+    "C2": {"name": "Codex C2", "home": "~/.codex"},
 }
 COMMANDS = {
     "@codex-business": "C1", "/codex-business": "C1",
-    "@codex-david": "C2", "/codex-david": "C2",
+    "@codex-c2": "C2", "/codex-c2": "C2",
 }
 PERMISSIONS = {"write", "maintain", "admin"}
 VERDICTS = {"comment", "approve", "request_changes"}
@@ -34,7 +34,7 @@ SEVERITIES = {"P0", "P1", "P2", "P3"}
 MAX_DIFF = 1_200_000
 MAX_BODY = 60_000
 COMMAND_RE = re.compile(
-    r"^(?P<command>@codex-(?:david|business)|/codex-(?:david|business))\s+"
+    r"^(?P<command>@codex-(?:c2|business)|/codex-(?:c2|business))\s+"
     r"(?P<mode>review|security\s+review)(?:\s+focus:\s*(?P<focus>[^\r\n]{1,200}))?$"
 )
 

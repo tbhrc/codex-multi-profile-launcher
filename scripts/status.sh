@@ -2,8 +2,8 @@
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-echo "== Codex David =="
-CODEX_HOME="$HOME/.codex-david" codex login status || true
+echo "== Codex C2 =="
+CODEX_HOME="$HOME/.codex" codex login status || true
 
 echo
 echo "== Codex Business =="

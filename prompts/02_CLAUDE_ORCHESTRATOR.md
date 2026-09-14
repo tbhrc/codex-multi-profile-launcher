@@ -19,7 +19,7 @@ Worker aliases:
 
 ```text
 C1 = Codex Business = ~/.codex-business
-C2 = Codex David    = ~/.codex-david
+C2 = Codex C2    = ~/.codex
 ```
 
 Do not treat C1 or C2 as a permanent hierarchy. Do not automatically rotate accounts or silently fall back.
