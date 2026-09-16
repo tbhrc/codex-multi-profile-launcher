@@ -1,11 +1,12 @@
-version: 2
+version: 3
 
 manager:
   id: github-controller
   name: TBHRC GitHub Controller
   runtime: authorised-agent
-  source_of_truth: owning GitHub repository and controlling Issue/PR
-  reusable_method: tbhrc/skills
+  organisation_master: tbhrc/workspace/AGENTS.md
+  source_of_truth: owning GitHub repository and controlling Issue/PR when one materially helps continuity
+  reusable_method: tbhrc/workspace/.folderdesk/skills
   privileged_runtime: tbhrc/ai-engine
 
 workers:
