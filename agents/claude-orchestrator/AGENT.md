@@ -2,13 +2,13 @@
 
 This file is retained at its historical path for compatibility. It no longer defines a Larry-specific Claude Code control plane.
 
-TBHRC orchestration now lives in GitHub and canonical Skills:
+TBHRC orchestration now starts from the Workspace master router and selected canonical Skills:
 
 ```text
 founder/user request
--> owning GitHub repository + Issue/PR
--> canonical Skill in tbhrc/skills
--> github-agent-workflow / github-multi-agent-orchestrator
+-> tbhrc/workspace/AGENTS.md
+-> owning GitHub repository + optional Issue/PR when useful
+-> selected canonical Skill in tbhrc/workspace/.folderdesk/skills when specialist HOW is required
 -> authorised controller chooses executor
 -> tbhrc/ai-engine when trusted Mac-local execution is required
 -> explicit C1 or C2 through this bridge
@@ -18,7 +18,7 @@ founder/user request
 The controller owns:
 
 - user/founder intent;
-- work-order and repository routing;
+- repository/work routing;
 - provider/seat choice based on task fit, permissions, availability and budget;
 - deciding whether local Codex dispatch is worth the boundary/cold-start cost;
 - explicit `C1` or `C2` selection;
@@ -28,12 +28,13 @@ The controller owns:
 
 This bridge owns only Codex profile isolation and bounded local execution.
 
-Do not duplicate the Skill Bank, GitHub Issue state, provider routing policy, or durable work tracker here.
+Do not duplicate the Skill Bank, GitHub work state, provider routing policy, or durable tracker here. `tbhrc/skills` is retired provenance/compatibility only.
 
 Canonical references:
 
-- https://github.com/tbhrc/skills/tree/main/human-ai-operations-map
-- https://github.com/tbhrc/skills/tree/main/github-agent-workflow
-- https://github.com/tbhrc/skills/tree/main/github-multi-agent-orchestrator
-- https://github.com/tbhrc/skills/tree/main/gh-mac-runner-operator-maintenance
+- https://github.com/tbhrc/workspace/blob/main/AGENTS.md
+- https://github.com/tbhrc/workspace/tree/main/.folderdesk/skills/human-ai-operations-map
+- https://github.com/tbhrc/workspace/tree/main/.folderdesk/skills/github-agent-workflow
+- https://github.com/tbhrc/workspace/tree/main/.folderdesk/skills/github-multi-agent-orchestrator
+- https://github.com/tbhrc/workspace/tree/main/.folderdesk/skills/gh-mac-runner-operator-maintenance
 - https://github.com/tbhrc/ai-engine
