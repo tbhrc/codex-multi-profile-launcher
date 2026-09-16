@@ -20,19 +20,22 @@ Never copy authentication between profiles and never read/print `auth.json`.
 
 ## 3. Keep real work in GitHub
 
-TBHRC durable work belongs in the owning GitHub repository and controlling Issue/PR. Reusable HOW belongs in `tbhrc/skills`. Remote privileged access to this Mac-local bridge belongs in `tbhrc/ai-engine`.
+Organisation-wide routing starts at `tbhrc/workspace/AGENTS.md`. Durable work belongs in the owning GitHub repository; use an Issue/PR when it materially improves continuity. Reusable HOW belongs in `tbhrc/workspace/.folderdesk/skills/`. Remote privileged access to this Mac-local bridge belongs in `tbhrc/ai-engine`.
 
 Use the current routing chain:
 
 ```text
-GitHub work order
--> canonical Skill
--> controller/orchestrator chooses an authorised executor
+Workspace AGENTS.md
+-> owning GitHub repository
+-> selected canonical Skill when specialist HOW is required
+-> controller chooses an authorised executor
 -> if Mac-local Codex is required: tbhrc/ai-engine
 -> explicit C1 or C2
 -> this launcher
 -> verified evidence back to GitHub
 ```
+
+`tbhrc/skills` is retired provenance/compatibility only.
 
 ## 4. Local manual dispatch
 
@@ -54,4 +57,4 @@ C2 = default Codex = ~/.codex
 
 Do not use a permanent C1-first/C2-second hierarchy. The controller explicitly selects a profile based on task fit, permissions, current availability and remaining budget. The launcher never performs automatic account rotation or silent fallback.
 
-For GitHub-controlled general work-order dispatch, follow `tbhrc/ai-engine#44`; do not invent a direct remote-control path in this repository.
+For GitHub-controlled general work-order dispatch, follow the current Workspace router and owning AI Engine capability; do not invent a direct remote-control path in this repository.
