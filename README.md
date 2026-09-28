@@ -147,6 +147,25 @@ CODEX_HOME="$HOME/.codex-business" codex
 
 This selects C1's isolated CLI home. Running plain `codex` without that environment setting uses the default C2 home. The repository's `scripts/start-codex-business.sh` also selects C1, but deliberately changes into this launcher repository before starting the CLI.
 
+## Keep C1 Remote available after a reboot
+
+Install the named macOS LaunchAgent once:
+
+```bash
+bash scripts/install-c1-remote-control-launchagent.sh
+```
+
+The `com.david.codex-c1-remote-control` job runs at user login and every five minutes. It calls `codex remote-control start` with C1's `CODEX_HOME`; the command is safe to repeat when the C1 daemon is already running. The CLI starts its own background daemon, so no Terminal or desktop window is needed. The job and installer have explicit C1 Remote names, and no extra Node service is installed. C2 remains on its default home.
+
+Check the installed job and C1 connection:
+
+```bash
+launchctl print "gui/$(id -u)/com.david.codex-c1-remote-control"
+CODEX_HOME="$HOME/.codex-business" codex remote-control start --json
+```
+
+The LaunchAgent begins after your macOS user logs in; macOS must be awake and online for Remote to connect.
+
 ## Custom Names
 
 The default labels are:
@@ -201,6 +220,7 @@ The running C1 window still belongs to OpenAI's signed `com.openai.codex` app. T
 | `scripts/install-macos-launchers.sh` | Creates the C1 `.app` launcher and icon |
 | `scripts/launch-codex-business-desktop.sh` | Launches C1 desktop profile |
 | `scripts/start-codex-business.sh` | Launches the C1 CLI from this repository |
+| `scripts/install-c1-remote-control-launchagent.sh` | Keeps C1 Remote connected after login and reboot |
 | `scripts/auth-codex-business.sh` | Runs CLI login for C1 |
 | `scripts/auth-codex-c2.sh` | Runs CLI login for C2 |
 | `scripts/status.sh` | Shows login status for C1 and default C2 |
