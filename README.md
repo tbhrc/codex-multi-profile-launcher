@@ -63,7 +63,7 @@ I should have exactly two intended Codex profiles:
 - C2 default: `~/.codex` + `~/Library/Application Support/Codex`
 ```
 
-After the agent finishes, add `Codex C1 Business.app` to your Dock if useful. C2 remains the normal installed ChatGPT app.
+After the agent finishes, pin the C1 launcher app itself (the blue C1 icon) to your Dock if useful. C2 remains the normal installed ChatGPT app. Do not pin a second copy of `/Applications/ChatGPT.app` as a C1 shortcut: it reopens C2 after C1 quits.
 
 ## What Problem This Solves
 
@@ -137,6 +137,16 @@ Codex C1 Business.app
 
 Use the C1 launcher for Business. Use the normal ChatGPT/Codex app for C2.
 
+## Launch the C1 CLI
+
+From the project directory you want Codex to work in:
+
+```bash
+CODEX_HOME="$HOME/.codex-business" codex
+```
+
+This selects C1's isolated CLI home. Running plain `codex` without that environment setting uses the default C2 home. The repository's `scripts/start-codex-business.sh` also selects C1, but deliberately changes into this launcher repository before starting the CLI.
+
 ## Custom Names
 
 The default labels are:
@@ -179,7 +189,9 @@ nohup /Applications/ChatGPT.app/Contents/MacOS/ChatGPT \
 
 For C2, launch the normal installed ChatGPT/Codex app. Its Codex home is `~/.codex` and its app data is `~/Library/Application Support/Codex`. No second C2 launcher or home is created.
 
-The running C1 window still belongs to OpenAI's signed `com.openai.codex` app. Two stock ChatGPT icons can appear while C1 and C2 are running, but pinning both does **not** create two durable profile-specific shortcuts: both Dock entries can point to `/Applications/ChatGPT.app`. Keep the C1 launcher installed as the explicit way to restart C1 after it exits. A separate C1 app identity remains unproven; do not re-sign OpenAI's app or copy profile data to simulate one.
+The running C1 window still belongs to OpenAI's signed `com.openai.codex` app. Two stock ChatGPT icons can appear while C1 and C2 are running, but pinning both does **not** create two durable profile-specific shortcuts: both Dock entries can point to `/Applications/ChatGPT.app`. Pin the distinct blue C1 wrapper, whose Dock entry targets `~/Applications/Codex C1 Business.app`. On David's Mac, that route was verified by quitting and reopening C1 twice while C2 remained separate. An additional stock running-app icon may still appear while C1 runs; do not re-sign OpenAI's app or copy profile data to simulate a second signed app identity.
+
+`runtime/active_worker.json` is generated local execution state. It is ignored by Git so launching C1 or C2 does not make the source checkout dirty; it is not a backup of either profile.
 
 ## Scripts
 
@@ -188,6 +200,7 @@ The running C1 window still belongs to OpenAI's signed `com.openai.codex` app. T
 | `scripts/bootstrap.sh` | Creates/validates the isolated C1 home; leaves C2 default `~/.codex` intact |
 | `scripts/install-macos-launchers.sh` | Creates the C1 `.app` launcher and icon |
 | `scripts/launch-codex-business-desktop.sh` | Launches C1 desktop profile |
+| `scripts/start-codex-business.sh` | Launches the C1 CLI from this repository |
 | `scripts/auth-codex-business.sh` | Runs CLI login for C1 |
 | `scripts/auth-codex-c2.sh` | Runs CLI login for C2 |
 | `scripts/status.sh` | Shows login status for C1 and default C2 |

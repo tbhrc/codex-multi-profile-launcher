@@ -40,11 +40,19 @@ bash scripts/status.sh
 
 Login status proves authentication only; provider credits/capacity are separate runtime state.
 
-## Start a profile
+## Start a CLI profile
+
+To start C1 in the project you are currently working on:
+
+```bash
+CODEX_HOME="$HOME/.codex-business" codex
+```
+
+To start C2 there, run plain `codex`. The repository wrappers below select the same homes but change the working directory to this launcher repository:
 
 ```bash
 bash scripts/start-codex-business.sh   # C1
-bash scripts/start-codex-c2.sh      # C2
+bash scripts/start-codex-c2.sh         # C2
 ```
 
 Aliases:
@@ -55,6 +63,8 @@ C2 = Codex C2    = ~/.codex
 ```
 
 The normal/default `~/.codex` profile is C2. Do not create a second C2 home.
+
+For the desktop app, pin the blue `~/Applications/Codex C1 Business.app` wrapper for C1 and use the ordinary `/Applications/ChatGPT.app` for C2. A second pinned stock ChatGPT icon is not a C1 launcher: both stock tiles can point to the default app. The blue wrapper was verified to reopen C1 after a full quit; its running window may also show a stock ChatGPT icon.
 
 The controller selects a seat/provider based on task fit and live availability. The launcher never silently swaps identities.
 

@@ -12,6 +12,7 @@
 .codex-homes/
 
 # Runtime noise
+runtime/active_worker.json
 runtime/logs/*
 runtime/outputs/*
 runtime/tmp/*

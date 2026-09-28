@@ -18,6 +18,10 @@ bash scripts/auth-codex-c2.sh         # C2 -> default ~/.codex
 
 Never copy authentication between profiles and never read/print `auth.json`.
 
+## Launch C1 interactively
+
+From the project directory you want to work in, run `CODEX_HOME="$HOME/.codex-business" codex` for the C1 CLI. The blue `~/Applications/Codex C1 Business.app` Dock launcher opens the separate C1 desktop profile; the normal ChatGPT app remains C2. Pin the blue wrapper itself, not a second copy of the stock ChatGPT app.
+
 ## 3. Keep real work in GitHub
 
 Organisation-wide routing starts at `tbhrc/workspace/AGENTS.md`. Durable work belongs in the owning GitHub repository; use an Issue/PR when it materially improves continuity. Reusable HOW belongs in `tbhrc/workspace/.folderdesk/skills/`. Remote privileged access to this Mac-local bridge belongs in `tbhrc/ai-engine`.

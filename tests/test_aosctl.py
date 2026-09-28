@@ -11,10 +11,13 @@ ACTIVE_WORKER = ROOT / "runtime" / "active_worker.json"
 
 class PackageTests(unittest.TestCase):
     def setUp(self):
-        self.active_worker_before = ACTIVE_WORKER.read_text(encoding="utf-8")
+        self.active_worker_before = ACTIVE_WORKER.read_bytes() if ACTIVE_WORKER.exists() else None
 
     def tearDown(self):
-        ACTIVE_WORKER.write_text(self.active_worker_before, encoding="utf-8")
+        if self.active_worker_before is None:
+            ACTIVE_WORKER.unlink(missing_ok=True)
+        else:
+            ACTIVE_WORKER.write_bytes(self.active_worker_before)
 
     def run_cmd(self, *args, expect=0):
         result = subprocess.run(["python3", str(BRIDGECTL), *args], cwd=ROOT, text=True, capture_output=True)

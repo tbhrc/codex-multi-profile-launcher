@@ -40,6 +40,8 @@ Each profile may contain its own `auth.json`, config and history. Never read, co
 
 GUI profiles may also use separate application-data directories. This isolation exists to preserve identity, not to manufacture workflow gates.
 
+The pinned blue C1 Dock wrapper is the durable desktop relaunch route; the default signed ChatGPT app is C2. Two pinned stock ChatGPT tiles can both resolve to the C2 app after C1 quits. For an interactive C1 CLI session in the current project, set `CODEX_HOME="$HOME/.codex-business"` on that `codex` invocation. The generated `runtime/active_worker.json` is local, ignored execution state, not profile backup data.
+
 ## Automated execution boundary
 
 Use the current tested launcher configuration that keeps Codex inside the assigned workspace and prevents ambient profile configuration from silently changing execution behaviour. Do not add another sandbox, approval layer, credential hop or proof ceremony unless a concrete new threat demonstrates a material gap.
