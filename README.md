@@ -165,17 +165,21 @@ CHATGPT_APP="/path/to/ChatGPT.app" bash scripts/install-macos-launchers.sh
 
 ## How It Works
 
-The C1 launcher does not copy credentials; it starts the installed app with a separate C1 environment and user-data path. C2 continues to use the default app state.
+The C1 launcher does not copy credentials; it starts the installed signed app as a detached process with a separate C1 environment and user-data path. It reopens the exact live C1 process or clears only a proven dead C1 singleton before launching. C2 continues to use the default app state.
 
 For C1:
 
 ```bash
 export CODEX_HOME="$HOME/.codex-business"
-exec /Applications/ChatGPT.app/Contents/MacOS/ChatGPT \
-  --user-data-dir="$HOME/Library/Application Support/Codex-C1-Business"
+export __CFBundleIdentifier="com.folderdesk.codex.c1-business.runtime"
+nohup /Applications/ChatGPT.app/Contents/MacOS/ChatGPT \
+  --user-data-dir="$HOME/Library/Application Support/Codex-C1-Business" \
+  >/dev/null 2>&1 &
 ```
 
 For C2, launch the normal installed ChatGPT/Codex app. Its Codex home is `~/.codex` and its app data is `~/Library/Application Support/Codex`. No second C2 launcher or home is created.
+
+The running C1 window still belongs to OpenAI's signed `com.openai.codex` app. Two stock ChatGPT icons can appear while C1 and C2 are running, but pinning both does **not** create two durable profile-specific shortcuts: both Dock entries can point to `/Applications/ChatGPT.app`. Keep the C1 launcher installed as the explicit way to restart C1 after it exits. A separate C1 app identity remains unproven; do not re-sign OpenAI's app or copy profile data to simulate one.
 
 ## Scripts
 
@@ -194,7 +198,7 @@ Validate the bridge:
 
 ```bash
 python3 tools/aosctl.py validate --verbose
-python3 -m unittest tests/test_aosctl.py
+python3 -m unittest discover -s tests
 ```
 
 Open C1 and verify the process:
